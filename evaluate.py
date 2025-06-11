@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser.add_argument("--eval_protocol", type=str, default="xverify", help="The evaluation protocol to be used.")
 
     # args related to the model
-    parser.add_argument("--model_name", type=str, default="gpt-4o-mini-2024-07-18", help="The agent backend to be used for inference.")
+    parser.add_argument("--model_name", type=str, default="xverify-9b-c", help="The agent backend to be used for inference.")
     parser.add_argument("--model_api_config", type=str, default="model_api_configs/model_api_config.json")
     parser.add_argument("--model_temperature", type=float, default=0.5, help="Temperature for sampling.")
     parser.add_argument("--model_max_tokens", type=int, default=2048, help="Maximum tokens for sampling.")
