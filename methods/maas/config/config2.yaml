@@ -1,0 +1,25 @@
+# Full Example: https://github.com/geekan/MetaGPT/blob/main/config/config2.example.yaml
+# Reflected Code: https://github.com/geekan/MetaGPT/blob/main/metagpt/config2.py
+# Config Docs: https://docs.deepwisdom.ai/main/en/guide/get_started/configuration.html
+
+# Default configuration for maas when used within MASLab
+llm:
+  api_type: "openai"
+  model: "gpt-4o-mini"
+  api_key: "dummy-key-will-be-overridden"
+  max_tokens: 2048
+  temperature: 0.5
+
+# Other default settings
+proxy: ""
+repair_llm_output: false
+prompt_schema: "json"
+language: "English"
+code_review_k_times: 2
+
+models:
+  gpt-4o-mini:
+    api_type: "openai"  # or azure / ollama / groq etc.
+    model: "gpt-4o-mini"  #  gpt-3.5-turbo or gpt-4-turbo
+    base_url: ""  # or forward url / other llm url
+    api_key: ""

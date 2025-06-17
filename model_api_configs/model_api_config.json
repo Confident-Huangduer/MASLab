@@ -1,13 +1,15 @@
 {
-    "llama-3.3-70b-instruct": {
+
+    "gpt-4o-mini": {
         "model_list": [
-            {"model_name": "llama-3.3-70b-instruct", "model_url": "http://a.b.c.d:e/v1", "api_key": "EMPTY"}
+            {"model_name": "gpt-4o-mini", "model_url": "", "api_key": ""}
         ],
         "max_workers_per_model": 10
     },
+    
     "gpt-4o-mini-2024-07-18": {
         "model_list": [
-            {"model_name": "gpt-4o-mini-2024-07-18", "model_url": "http://a.b.c.d:e/v1", "api_key": "xyz"}
+            {"model_name": "gpt-4o-mini", "model_url": "", "api_key": ""}
         ],
         "max_workers_per_model": 10
     }

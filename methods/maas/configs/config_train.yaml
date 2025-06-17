@@ -1,0 +1,7 @@
+# Training configuration for MAAS in MASLab
+is_test: false  # false for training mode
+sample: 4       # Number of samples per batch
+round: 1        # Training round
+batch_size: 4   # Batch size for training
+lr: 0.01        # Learning rate
+is_textgrad: false  # Whether to use textgrad optimization

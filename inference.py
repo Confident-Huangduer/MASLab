@@ -130,7 +130,7 @@ if __name__ == "__main__":
         lock = threading.Lock()
         if args.sequential:
             for sample in test_dataset:
-                process_sample(args, general_config, sample, output_path)
+                process_sample(args, general_config, sample, output_path, lock)
         else:
             max_workers = model_api_config[args.model_name]["max_workers"]
             with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
