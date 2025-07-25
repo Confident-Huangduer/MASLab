@@ -15,6 +15,18 @@ def write_to_jsonl(lock, file_name, data):
             json.dump(data, f)
             f.write('\n')
 
+def read_valid_jsonl(file_name):
+    all_data = []
+    with open(file_name, "r") as f:
+        tmp = f.readlines()
+    for line in tmp:
+        try:
+            all_data.append(json.loads(line))
+        except Exception as e:
+            print(line)
+            print(f"{e}")
+    return all_data
+
 def reserve_unprocessed_queries(output_path, test_dataset):
     processed_queries = set()
     if os.path.exists(output_path):

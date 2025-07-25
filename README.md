@@ -40,6 +40,11 @@ python inference.py --method_name <method_name> --test_dataset_name <dataset_nam
 python inference.py --method_name <method_name> --test_dataset_name <dataset_name>
 ```
 
+4. To evaluate
+```
+python evaluate.py --eval_protocol <eval_protocol> --tested_dataset_name <tested_dataset_name> --tested_method_name <tested_method_name> --tested_mas_model_name <tested_mas_model_name>
+```
+
 ## Citation
 ```
 @article{ye2025maslab,
