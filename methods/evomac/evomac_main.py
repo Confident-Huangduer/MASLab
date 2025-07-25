@@ -44,7 +44,7 @@ class EvoMAC_Main(MAS):
         # 4. Update the workflow if bugs are found iteratively
         for i in range(self.iteration-1):
             if not has_bug_in_tests:
-                return self.codes._get_raw_codes()
+                return {'response': self.codes._get_raw_codes()}
             else:
                 updating = self.format_messages(ORGANIZER.format(task=query), UPDATING.format(task=query, codes=self.codes._get_codes(), issues=test_reports))
                 organization = self.call_llm(messages=updating)
@@ -53,7 +53,7 @@ class EvoMAC_Main(MAS):
                 self.excute_workflow(query)
                 has_bug_in_tests, test_reports = self.excute_test_workflow(query)
 
-        return {"response": self.codes._get_raw_codes()}
+        return {'response': self.codes._get_raw_codes()}
 
     def excute_workflow(self, query):
         """
