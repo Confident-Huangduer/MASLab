@@ -56,7 +56,7 @@ class DyLAN_MATH(MAS):
                 break
         
         if consensus:
-            return self._extract_final_answer(agent_contexts)
+            return {'response': self._extract_final_answer(agent_contexts)}
         
         # Second round: debate based on other agents' solutions
         consensus = False
@@ -79,7 +79,7 @@ class DyLAN_MATH(MAS):
                 break
         
         if consensus:
-            return self._extract_final_answer(agent_contexts)
+            return {'response': self._extract_final_answer(agent_contexts)}
         
         # Third round: ranking and selecting best solutions
         message = self._construct_ranking_message(agent_contexts, question)
@@ -89,7 +89,7 @@ class DyLAN_MATH(MAS):
         agent_contexts = [agent_contexts[top] for top in tops]
         
         if self._check_reach_consensus(agent_contexts):
-            return self._extract_final_answer(agent_contexts)
+            return {'response': self._extract_final_answer(agent_contexts)}
         
         # Final round: debate with selected best solutions
         message = self._construct_message(agent_contexts, question)
@@ -106,7 +106,7 @@ class DyLAN_MATH(MAS):
         
         answer = self._extract_final_answer(agent_contexts)
         wrapped_answer = r"\boxed{" + answer + "}"          # This is for fair comparison between evaluation protocols
-        return {"response": wrapped_answer}
+        return {'response': wrapped_answer}
     
     def _prepare_question(self, query: str) -> str:
         """Prepare the question with appropriate examples."""

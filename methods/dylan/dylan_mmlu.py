@@ -65,7 +65,7 @@ class DyLAN_MMLU(MAS):
             if len(activated_indices) >= math.floor(2/3 * self.agents_count):
                 reached, reply = self.check_consensus(activated_indices, list(range(self.agents_count)))
                 if reached:
-                    return reply
+                    return {'response': reply}
 
         # Second round
         loop_indices = list(range(self.agents_count, self.agents_count*2))
@@ -80,7 +80,7 @@ class DyLAN_MMLU(MAS):
             if len(activated_indices) >= math.floor(2/3 * self.agents_count):
                 reached, reply = self.check_consensus(activated_indices, list(range(self.agents_count)))
                 if reached:
-                    return reply
+                    return {'response': reply}
 
         # Remaining rounds
         idx_mask = list(range(self.agents_count))
@@ -108,9 +108,9 @@ class DyLAN_MMLU(MAS):
                     if len(idxs) > math.floor(2/3 * len(idx_mask)):
                         reached, reply = self.check_consensus(idxs, idx_mask)
                         if reached:
-                            return reply
+                            return {'response': reply}
         response = most_frequent([self.nodes[idx]['answer'] for idx in idxs], lambda x, y: x == y)[0]
-        return {"response": response}
+        return {'response': response}
     
     def init_network(self):
         activation = ACTIVATION_MAP[self.activation]

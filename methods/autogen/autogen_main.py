@@ -37,7 +37,7 @@ class AutoGen_Main(MAS):
         self.history.append({"content": query, "role": "user_proxy"})
         
         if self.is_termination_msg in assistant_agent_response:
-            return assistant_agent_response
+            return {"response": assistant_agent_response}
         
         for i in range(self.max_turn - 1):
             
@@ -58,7 +58,7 @@ class AutoGen_Main(MAS):
             assistant_agent_history.append({"content": assistant_agent_response, "role": "assistant"})
             self.history.append({"content": assistant_agent_response, "role": "assistant_agent"})
             if self.is_termination_msg in user_proxy_response:
-                return assistant_agent_response
+                return {"response": assistant_agent_response}
             
             ## User Proxy to Assistant Agent
             assistant_agent_messages = self.construct_messages(assistant_agent_system_message, assistant_agent_history, user_proxy_response)
@@ -68,7 +68,7 @@ class AutoGen_Main(MAS):
             assistant_agent_history.append({"content": user_proxy_response, "role": "user"})
             self.history.append({"content": user_proxy_response, "role": "user_proxy"})
             if self.is_termination_msg in assistant_agent_response:
-                return assistant_agent_response
+                return {"response": assistant_agent_response}
     
         return {"response": assistant_agent_response}
     

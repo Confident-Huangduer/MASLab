@@ -55,7 +55,7 @@ class DyLAN_HumanEval(MAS):
                         break
         
         if not entry_point:
-            return "Error: Could not determine the entry point for the function. Please provide a valid HumanEval problem."
+            raise ValueError("Error: Could not determine the entry point for the function. Please provide a valid HumanEval problem.")
         
         # Reset network state
         self.init_nodes()
@@ -97,7 +97,7 @@ class DyLAN_HumanEval(MAS):
                 reached, reply = self.check_consensus(active_nodes, list(range(self.num_agents)), prompt, entry_point)
                 if reached:
                     agent_nodes = [node for node in self.nodes if node["type"] == "agent" and node["active"]]
-                    return self.all_tests_and_get_final_result(prompt, unit_tests, entry_point, agent_nodes)
+                    return {'response': self.all_tests_and_get_final_result(prompt, unit_tests, entry_point, agent_nodes)}
 
         # Process remaining rounds
         idx_mask = list(range(self.num_agents))
@@ -141,7 +141,7 @@ class DyLAN_HumanEval(MAS):
                         reached, reply = self.check_consensus(active_nodes, idx_mask, prompt, entry_point)
                         if reached:
                             agent_nodes = [node for node in self.nodes if node["type"] == "agent" and node["active"]]
-                            return self.all_tests_and_get_final_result(prompt, unit_tests, entry_point, agent_nodes)
+                            return {'response': self.all_tests_and_get_final_result(prompt, unit_tests, entry_point, agent_nodes)}
         
         # Return final result if no consensus was reached
         agent_nodes = [node for node in self.nodes if node["type"] == "agent" and node["active"]]

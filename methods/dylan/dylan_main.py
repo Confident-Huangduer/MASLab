@@ -58,7 +58,7 @@ class DyLAN_Main(MAS):
             if idx >= math.floor(2/3 * self.num_agents):
                 reached, reply = self._check_consensus(activated_indices, list(range(self.num_agents)))
                 if reached:
-                    return reply
+                    return {'response': reply}
 
         # Second round
         loop_indices = list(range(self.num_agents, self.num_agents*2))
@@ -70,7 +70,7 @@ class DyLAN_Main(MAS):
             if idx >= math.floor(2/3 * self.num_agents):
                 reached, reply = self._check_consensus(activated_indices, list(range(self.num_agents)))
                 if reached:
-                    return reply
+                    return {'response': reply}
 
         # Subsequent rounds
         idx_mask = list(range(self.num_agents))
@@ -96,9 +96,9 @@ class DyLAN_Main(MAS):
                     if len(idxs) > math.floor(2/3 * len(idx_mask)):
                         reached, reply = self._check_consensus(idxs, idx_mask)
                         if reached:
-                            return reply
+                            return {'response': reply}
         response = self._most_frequent([self.nodes[idx]['answer'] for idx in idxs], self.cmp_res)[0]
-        return {"response": response}
+        return {'response': response}
 
     def _get_activation_map(self):
         """Map activation names to their corresponding values"""
