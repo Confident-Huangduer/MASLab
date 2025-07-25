@@ -100,7 +100,7 @@ if __name__ == "__main__":
     
         sample_num = len(saved_data)
         valid_eval_score_list = [sample["eval_score"] for sample in saved_data if sample["eval_score"] is not None]
-        valid_correct_num = sum([1 for score in valid_eval_score_list if score==2])
+        valid_correct_num = sum([1 for score in valid_eval_score_list if score==1])
         num_valid = len(valid_eval_score_list)
         num_exclude_eval_error = len([sample for sample in saved_data if not sample["eval_content"].startswith("Eval Error")])
         print(f">> Evaluation Finished:\n{sample_num} samples in total\n{num_valid} valid samples | {valid_correct_num} correct samples | accuracy: {valid_correct_num/num_valid*100:.2f}%\n{num_exclude_eval_error} samples excluding eval error | accuracy: {valid_correct_num/num_exclude_eval_error*100:.2f}%")
